@@ -329,7 +329,7 @@ public static class Functions
             for (int i = 0, loopTo = Names.Count - 1; i <= loopTo; i++)
             {
                 f.Seek(FIELD_TYPE_OFFSET + (i * 5 * 4) + Offset, SeekOrigin.Begin);
-                f.Read(Buffer, 0, 4);
+                f.ReadExactly(Buffer, 0, 4);
                 Temp = BitConverter.ToInt32(Buffer, 0);
                 if (Temp < 0xFFFF)
                 {
@@ -342,16 +342,16 @@ public static class Functions
                 {
                     Name = Temp
                 };
-                f.Read(Buffer, 0, 4);
+                f.ReadExactly(Buffer, 0, 4);
                 Temp = BitConverter.ToInt32(Buffer, 0);
                 tmp.Offset = Temp;
-                f.Read(Buffer, 0, 4);
+                f.ReadExactly(Buffer, 0, 4);
                 Temp = BitConverter.ToInt32(Buffer, 0);
                 tmp.Size = Temp;
-                f.Read(Buffer, 0, 4);
+                f.ReadExactly(Buffer, 0, 4);
                 Temp = BitConverter.ToInt32(Buffer, 0);
                 tmp.Type = Temp;
-                f.Read(Buffer, 0, 4);
+                f.ReadExactly(Buffer, 0, 4);
                 Temp = BitConverter.ToInt32(Buffer, 0);
                 tmp.Flags = Temp;
                 Info.Add(tmp);
